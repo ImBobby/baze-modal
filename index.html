@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+    <link rel="stylesheet" href="baze.modal.css">
+</head>
+<body>
+    <button data-baze-modal data-target="#modal1">click</button>
+    <button data-baze-modal data-target="#modal2">click</button>
+
+    <div class="modal" id="modal1">
+        <section class="modal-dialog">
+            <header class="modal-dialog-section modal-dialog-section--header">
+                <h3 class="modal-title">Modal Title 1</h3>
+                <button class="modal-dialog-close">
+                    &times;
+                </button>
+            </header>
+            <div class="modal-dialog-section">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae laborum quis eos, delectus velit illum, mollitia sequi vitae veritatis quibusdam ducimus laboriosam, excepturi esse doloremque expedita et vero praesentium, minima.</p>
+                <p>Tempore deleniti nemo excepturi quas repudiandae, commodi alias deserunt sunt soluta, vel itaque debitis. Accusantium totam corporis vero dolorum sint possimus, a. Laudantium, voluptatum iusto nam odio nostrum maiores at.</p>
+                <p>Ipsum mollitia odio, accusamus iste nostrum ipsa porro est, voluptatibus dignissimos hic eum voluptatum voluptates, repudiandae eveniet sint deleniti reprehenderit. Beatae unde ipsa ratione nihil repellendus ab libero. Totam, quaerat?</p>
+            </div>
+            <div class="modal-dialog-section modal-dialog-section--footer">
+                footer
+            </div>
+        </section>
+    </div>
+
+    <div class="modal" id="modal2">
+        <section class="modal-dialog">
+            <header class="modal-dialog-section modal-dialog-section--header">
+                <h3 class="modal-title">Modal Title 2</h3>
+                <button class="modal-dialog-close">
+                    &times;
+                </button>
+            </header>
+            <div class="modal-dialog-section">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptatibus, perferendis nihil pariatur. Error deleniti minus amet quo adipisci recusandae, earum animi pariatur quas, dolore quia perspiciatis autem eveniet blanditiis.</p>
+            </div>
+            <div class="modal-dialog-section modal-dialog-section--footer">
+                footer
+            </div>
+        </section>
+    </div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="baze.modal.js"></script>
+    <script>
+        $('[data-baze-modal]').bazeModal();
+    </script>
+</body>
+</html>
