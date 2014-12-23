@@ -47,14 +47,20 @@
         </section>
     </div>
     
+    <!-- 
     <script src="jquery.min.js"></script>
+     -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../baze.modal.js"></script>
     <script>
         var elems = $('[data-baze-modal]');
-        
-        elems.eq(0).bazeModal({
+
+        elems.bazeModal({
             onOpen: function () {
-                
+                console.log('opened');
+            },
+            onClose: function () {
+                console.log('closed');
             }
         });
     </script>

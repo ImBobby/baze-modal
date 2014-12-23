@@ -30,7 +30,6 @@ window.requestTimeout=function(fn,delay){if(!window.requestAnimationFrame&&!wind
   function Plugin ( element, options ) {
     this.element    = $(element);
     this.settings   = $.extend( {}, defaults, options );
-    this._defaults  = defaults;
 
     this.init();
   }
@@ -73,9 +72,10 @@ window.requestTimeout=function(fn,delay){if(!window.requestAnimationFrame&&!wind
     var cb    = this.settings;
 
     var isEscapeKey = function (e) {
+      var elem = $('.' + classes.show);
 
       if ( e.keyCode === 27 ) {
-        Plugin.prototype.closeModal($('.modal--show'), cb.onClose);
+        Plugin.prototype.closeModal(elem, cb.onClose);
       }
 
     };
