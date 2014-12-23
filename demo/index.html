@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Document</title>
 
-    <link rel="stylesheet" href="raw/normalize.css">
-    <link rel="stylesheet" href="baze.modal.css">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="../baze.modal.css">
 </head>
 <body>
     <button data-baze-modal data-target="#modal1">click</button>
@@ -48,14 +48,13 @@
     </div>
     
     <script src="jquery.min.js"></script>
-    <script src="baze.modal.js"></script>
+    <script src="../baze.modal.js"></script>
     <script>
-        $('[data-baze-modal]').bazeModal({
+        var elems = $('[data-baze-modal]');
+        
+        elems.eq(0).bazeModal({
             onOpen: function () {
-                console.log('modal open ngehe');
-            },
-            onClose: function () {
-                console.log('modal close ngehe');
+                
             }
         });
     </script>

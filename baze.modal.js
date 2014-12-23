@@ -38,6 +38,7 @@ window.requestTimeout=function(fn,delay){if(!window.requestAnimationFrame&&!wind
   Plugin.prototype.init = function () {
     this.addClickHandler();
     this.escapeKeyHandler();
+    this.destroy();
   };
 
   Plugin.prototype.addClickHandler = function () {
@@ -105,6 +106,14 @@ window.requestTimeout=function(fn,delay){if(!window.requestAnimationFrame&&!wind
     if ( cb ) {
       requestTimeout( cb, 600 );
     }
+  };
+
+  Plugin.prototype.destroy = function () {
+    var elem = this.element;
+
+    elem.on('bazemodal.destroy', function () {
+      elem.unbind('click');
+    });
   };
 
   function disableScroll() {
