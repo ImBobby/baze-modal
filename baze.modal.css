@@ -25,6 +25,7 @@
     -webkit-transition: opacity 300ms ease 300ms, -webkit-transform 0 ease 600ms;
             transition: opacity 300ms ease 300ms, transform 0 ease 600ms;
     -webkit-overflow-scrolling: touch;
+    will-change: transform;
 }
 
 .bzm--show {

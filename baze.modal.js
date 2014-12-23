@@ -48,7 +48,7 @@ window.requestAnimFrame = (function() {
 
   Plugin.prototype.init = function () {
     this.setupModal();
-    // this.addClickHandler();
+    this.addClickHandler();
     this.escapeKeyHandler();
     this.destroy();
   };
@@ -111,8 +111,6 @@ window.requestAnimFrame = (function() {
       .append( dDialog );
 
     $body.append( dOverlay );
-
-    this.addClickHandler();
   };
 
   Plugin.prototype.addClickHandler = function () {
