@@ -9,48 +9,28 @@
 </head>
 <body>
     <button data-baze-modal data-target="#modal1">click</button>
-    <button data-baze-modal data-target="#modal2">click</button>
+    <button id="ngehe" data-target="#modal2">click</button>
 
-    <div class="modal" id="modal1">
-        <section class="modal-dialog">
-            <header class="modal-dialog-section modal-dialog-section--header">
-                <h3 class="modal-title">Modal Title 1</h3>
-                <button class="modal-dialog-close">
-                    &times;
-                </button>
-            </header>
-            <div class="modal-dialog-section">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae laborum quis eos, delectus velit illum, mollitia sequi vitae veritatis quibusdam ducimus laboriosam, excepturi esse doloremque expedita et vero praesentium, minima.</p>
-                <p>Tempore deleniti nemo excepturi quas repudiandae, commodi alias deserunt sunt soluta, vel itaque debitis. Accusantium totam corporis vero dolorum sint possimus, a. Laudantium, voluptatum iusto nam odio nostrum maiores at.</p>
-                <p>Ipsum mollitia odio, accusamus iste nostrum ipsa porro est, voluptatibus dignissimos hic eum voluptatum voluptates, repudiandae eveniet sint deleniti reprehenderit. Beatae unde ipsa ratione nihil repellendus ab libero. Totam, quaerat?</p>
-            </div>
-            <div class="modal-dialog-section modal-dialog-section--footer">
-                footer
-            </div>
-        </section>
+    <div class="bzm-content" id="modal1" data-title="Hello World">
+        <p>Content 1</p>
     </div>
 
-    <div class="modal" id="modal2">
-        <section class="modal-dialog">
-            <header class="modal-dialog-section modal-dialog-section--header">
-                <h3 class="modal-title">Modal Title 2</h3>
-                <button class="modal-dialog-close">
-                    &times;
-                </button>
-            </header>
-            <div class="modal-dialog-section">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptatibus, perferendis nihil pariatur. Error deleniti minus amet quo adipisci recusandae, earum animi pariatur quas, dolore quia perspiciatis autem eveniet blanditiis.</p>
-            </div>
-            <div class="modal-dialog-section modal-dialog-section--footer">
-                footer
-            </div>
-        </section>
+    <div class="bzm-content" id="modal2" data-title="Modal 2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque aspernatur, non odio! Molestias similique officiis, non magni voluptates architecto quos optio dignissimos placeat adipisci ad nisi, vel obcaecati error! Repellendus.</p>
+
+        <ul>
+            <li>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur omnis, at deserunt, accusantium repellendus totam deleniti sequi tempore cum sapiente nemo amet molestiae ea. Dolorum, totam dolore commodi vero possimus.</p>
+            </li>
+            <li>
+                <p>Dignissimos ex, eos quas voluptas laborum, cupiditate obcaecati impedit in fugit eligendi sint adipisci aspernatur natus? Error rerum repudiandae provident alias impedit, assumenda hic quod laudantium. Consequuntur similique, repellendus expedita.</p>
+            </li>
+        </ul>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime velit, labore quisquam autem ipsum eaque recusandae unde, et deleniti, magni aperiam vitae deserunt perferendis quam. Eius commodi aliquid soluta! Iure?</p>
     </div>
     
-    <!-- 
     <script src="jquery.min.js"></script>
-     -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../baze.modal.js"></script>
     <script>
         var elems = $('[data-baze-modal]');
@@ -63,6 +43,8 @@
                 console.log('closed');
             }
         });
+
+        $('#ngehe').bazeModal();
     </script>
 </body>
 </html>

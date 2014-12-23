@@ -20,9 +20,18 @@ window.requestAnimFrame = (function() {
   var $page = $('html, body');
 
   var classes = {
-    show    : 'modal--show',
-    scroll  : 'modal-disable-scroll',
-    closeBtn: 'modal-dialog-close'
+    show    : 'bzm--show',
+    scroll  : 'bzm-disable-scroll',
+    closeBtn: 'data-close-modal',
+
+    header  : 'bzm-header',
+    title   : 'bzm-title',
+    body    : 'bzm-body',
+    footer  : 'bzm-footer',
+    dialog  : 'bzm-dialog',
+    overlay : 'bzm',
+    btnX    : 'bzm-header-close',
+    btn     : 'bzm-btn'
   };
 
   var defaults = {
@@ -38,9 +47,70 @@ window.requestAnimFrame = (function() {
   }
 
   Plugin.prototype.init = function () {
+    this.setupModal();
     this.addClickHandler();
     this.escapeKeyHandler();
     this.destroy();
+  };
+
+  Plugin.prototype.setupModal = function () {
+    var target  = this.element.attr('data-target'),
+        $target = $(target),
+        $body   = $(document.body),
+
+        dID       = $target.attr('id'),
+        title     = $target.attr('data-title'),
+        dContent  = $target.html(),
+        dBtnX     = $( document.createElement('button') ),
+        dTitle    = $( document.createElement('h3') ),
+        dHeader   = $( document.createElement('div') ),
+        dBody     = $( document.createElement('div') ),
+        dBtnClose = $( document.createElement('button') ),
+        dFooter   = $( document.createElement('div') ),
+        dDialog   = $( document.createElement('div') ),
+        dOverlay  = $( document.createElement('div') );
+
+    $target.removeAttr('id');
+
+    dBtnX
+      .addClass( classes.btnX )
+      .attr('data-close-modal', '')
+      .text('Close');
+
+    dTitle
+      .addClass( classes.title )
+      .text( title );
+
+    dHeader
+      .addClass( classes.header )
+      .append( dTitle )
+      .append( dBtnX );
+
+    dBody
+      .addClass( classes.body )
+      .html( dContent );
+
+    dBtnClose
+      .addClass( classes.btn )
+      .attr('data-close-modal', '')
+      .text('Close');
+
+    dFooter
+      .addClass( classes.footer )
+      .append( dBtnClose );
+
+    dDialog
+      .addClass( classes.dialog )
+      .append( dHeader )
+      .append( dBody )
+      .append( dFooter );
+
+    dOverlay
+      .attr('id', dID)
+      .addClass( classes.overlay )
+      .append( dDialog );
+
+    $body.append( dOverlay );
   };
 
   Plugin.prototype.addClickHandler = function () {
@@ -49,7 +119,7 @@ window.requestAnimFrame = (function() {
     var getTarget = function (e) {
       var target    = this.getAttribute('data-target'),
           $target   = $(target),
-          $closeBtn = $target.find('.' + classes.closeBtn),
+          $closeBtn = $target.find('[' + classes.closeBtn + ']'),
           callCloseModal;
 
       if ( !$target.length ) return;
