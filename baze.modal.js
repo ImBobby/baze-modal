@@ -48,7 +48,7 @@ window.requestAnimFrame = (function() {
 
   Plugin.prototype.init = function () {
     this.setupModal();
-    this.addClickHandler();
+    // this.addClickHandler();
     this.escapeKeyHandler();
     this.destroy();
   };
@@ -111,6 +111,8 @@ window.requestAnimFrame = (function() {
       .append( dDialog );
 
     $body.append( dOverlay );
+
+    this.addClickHandler();
   };
 
   Plugin.prototype.addClickHandler = function () {
@@ -124,7 +126,7 @@ window.requestAnimFrame = (function() {
 
       if ( !$target.length ) return;
 
-      callCloseModal = function () {
+      callCloseModal = function (e) {
         Plugin.prototype.closeModal( $target, cb.onClose );
       };
 
@@ -132,12 +134,12 @@ window.requestAnimFrame = (function() {
 
       $closeBtn
         .unbind('click')
-        .click( callCloseModal );
+        .bind('click', callCloseModal );
     };
 
     this.element
       .unbind('click', getTarget)
-      .click( getTarget );
+      .bind('click', getTarget );
   };
 
   Plugin.prototype.escapeKeyHandler = function () {
@@ -147,15 +149,17 @@ window.requestAnimFrame = (function() {
     var isEscapeKey = function (e) {
       var elem = $('.' + classes.show);
 
-      if ( e.keyCode === 27 ) {
-        Plugin.prototype.closeModal(elem, cb.onClose);
+      if ( e.keyCode === 27 && elem.length ) {
+        var $btnClose = elem.find('.' + classes.btnX);
+
+        $btnClose.trigger('click');
       }
 
     };
 
     $doc
       .unbind('keyup', isEscapeKey)
-      .keyup( isEscapeKey );
+      .bind('keyup', isEscapeKey );
   };
 
 
@@ -226,13 +230,11 @@ window.requestAnimFrame = (function() {
 
 
   $.fn[ pluginName ] = function ( options ) {
-    this.each(function() {
+    return this.each(function() {
       if ( !$.data( this, 'plugin_' + pluginName ) ) {
         $.data( this, 'plugin_' + pluginName, new Plugin( this, options ) );
       }
     });
-
-    return this;
   };
 
 })( jQuery, window, document );
