@@ -6,6 +6,14 @@
     "ImBobby <squidz.bee@gmail.com>"
   ],
   "description": "Simple yet customizable jQuery modal window",
+  "main": [
+    "baze.modal.js",
+    "baze.modal.css"
+  ],
+  "ignore": [
+    "demo",
+    ".gitignore"
+  ],
   "keywords": [
     "modal"
   ],
