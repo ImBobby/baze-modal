@@ -23,7 +23,8 @@ window.requestTimeout=function(fn,delay){if(!window.requestAnimationFrame&&!wind
   };
 
   var defaults    = {
-
+    onOpen: null,
+    onClose: null
   };
 
   function Plugin ( element, options ) {
@@ -40,58 +41,70 @@ window.requestTimeout=function(fn,delay){if(!window.requestAnimationFrame&&!wind
   };
 
   Plugin.prototype.addClickHandler = function () {
+    var cb = this.settings;
+
     var getTarget = function (e) {
       var target    = this.getAttribute('data-target'),
           $target   = $(target),
-          $closeBtn = $target.find('.' + classes.closeBtn);
+          $closeBtn = $target.find('.' + classes.closeBtn),
+          callCloseModal;
 
       if ( !$target.length ) return;
 
-      Plugin.prototype.openModal( $target );
+      var callCloseModal = function () {
+        Plugin.prototype.closeModal( $target, cb.onClose );
+      };
 
-      $closeBtn.click( function () {
-        Plugin.prototype.closeModal( $target );
-      });
+      Plugin.prototype.openModal( $target, cb.onOpen );
+
+      $closeBtn
+        .unbind('click')
+        .click( callCloseModal );
     };
 
-    this.element.click( getTarget );
+    this.element
+      .unbind('click', getTarget)
+      .click( getTarget );
   };
 
   Plugin.prototype.escapeKeyHandler = function () {
+    var $doc  = $(document);
+    var cb    = this.settings;
+
     var isEscapeKey = function (e) {
 
       if ( e.keyCode === 27 ) {
-        Plugin.prototype.closeAllModal();
+        Plugin.prototype.closeModal($('.modal--show'), cb.onClose);
       }
 
     };
 
-    $(document).keyup( isEscapeKey );
+    $doc
+      .unbind('keyup', isEscapeKey)
+      .keyup( isEscapeKey );
   };
 
 
-  Plugin.prototype.openModal = function ( target ) {
+  Plugin.prototype.openModal = function ( target, cb ) {
+    if ( !target.length ) return;
+
     target.addClass( classes.show );
     disableScroll();
-    requestTimeout(function () {
-      console.log('modal opened');
-    }, 600);
+
+    if ( cb ) {
+      requestTimeout( cb, 600 );
+    }
   };
 
-  Plugin.prototype.closeModal = function ( target ) {
+  Plugin.prototype.closeModal = function ( target, cb ) {
+    if ( !target.length ) return;
+
     target.removeClass( classes.show );
     enableScroll();
-    requestTimeout(function () {
-      console.log('modal closed');
-    }, 600);
-  };
 
-  Plugin.prototype.closeAllModal = function () {
-    $('.modal').removeClass( classes.show );
-    enableScroll();
-    requestTimeout(function () {
-      console.log('modal closed');
-    }, 600);
+    if ( cb ) {
+      requestTimeout( cb, 600 );
+    }
   };
 
   function disableScroll() {

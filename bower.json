@@ -1,0 +1,16 @@
+{
+  "name": "baze-modal",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ImBobby/baze-modal",
+  "authors": [
+    "ImBobby <squidz.bee@gmail.com>"
+  ],
+  "description": "Simple yet customizable jQuery modal window",
+  "keywords": [
+    "modal"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~1.9.1"
+  }
+}

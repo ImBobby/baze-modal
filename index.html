@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+    <link rel="stylesheet" href="raw/normalize.css">
     <link rel="stylesheet" href="baze.modal.css">
 </head>
 <body>
@@ -47,10 +47,17 @@
         </section>
     </div>
     
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="jquery.min.js"></script>
     <script src="baze.modal.js"></script>
     <script>
-        $('[data-baze-modal]').bazeModal();
+        $('[data-baze-modal]').bazeModal({
+            onOpen: function () {
+                console.log('modal open ngehe');
+            },
+            onClose: function () {
+                console.log('modal close ngehe');
+            }
+        });
     </script>
 </body>
 </html>
