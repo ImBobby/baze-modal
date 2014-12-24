@@ -28,12 +28,24 @@
     will-change: transform;
 }
 
+.bzm--oldie {
+    display: none;
+    opacity: 1;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+}
+
 .bzm--show {
     opacity: 1;
     -webkit-transform: scale(1) translateZ(0);
             transform: scale(1) translateZ(0);
     -webkit-transition: opacity 300ms ease;
             transition: opacity 300ms ease;
+}
+
+.bzm--oldie-show {
+    display: block;
 }
 
 .bzm-dialog {
@@ -50,6 +62,11 @@
     -webkit-transition: -webkit-transform 300ms ease;
             transition: transform 300ms ease;
     will-change: transform;
+}
+
+.bzm--oldie .bzm-dialog {
+    top: 0;
+    bottom: auto;
 }
 
 .bzm--show .bzm-dialog {

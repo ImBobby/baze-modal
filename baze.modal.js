@@ -19,6 +19,8 @@ window.requestAnimFrame = (function() {
 
   var $page = $('html, body');
 
+  var CBDURATION = supportTransition()? 600 : 100;
+
   var classes = {
     show    : 'bzm--show',
     scroll  : 'bzm-disable-scroll',
@@ -31,7 +33,9 @@ window.requestAnimFrame = (function() {
     dialog  : 'bzm-dialog',
     overlay : 'bzm',
     btnX    : 'bzm-header-close',
-    btn     : 'bzm-btn'
+    btn     : 'bzm-btn',
+    oldie   : 'bzm--oldie',
+    oldieS  : 'bzm--oldie-show'
   };
 
   var defaults = {
@@ -110,29 +114,61 @@ window.requestAnimFrame = (function() {
       .addClass( classes.overlay )
       .append( dDialog );
 
+    if ( !supportTransition() ) {
+      dOverlay.addClass( classes.oldie );
+    }
+
     $body.append( dOverlay );
   };
 
   Plugin.prototype.addClickHandler = function () {
-    var cb = this.settings;
+    var cbOpen  = this.settings.onOpen,
+        cbClose = this.settings.onClose;
+
+    console.log( CBDURATION );
 
     var getTarget = function (e) {
       var target    = this.getAttribute('data-target'),
           $target   = $(target),
           $closeBtn = $target.find('[' + classes.closeBtn + ']'),
-          callCloseModal;
+          openModal,
+          closeModal;
 
       if ( !$target.length ) return;
 
-      callCloseModal = function (e) {
-        Plugin.prototype.closeModal( $target, cb.onClose );
+      openModal = function () {
+        if ( supportTransition() ) {
+          $target.addClass( classes.show );
+        } else {
+          $target.addClass( classes.oldieS );
+        }
+
+        disableScroll();
+
+        if ( cbOpen && typeof cbOpen === 'function' ) {
+          timeout( cbOpen, CBDURATION );
+        }
       };
 
-      Plugin.prototype.openModal( $target, cb.onOpen );
+      closeModal = function () {
+        if ( supportTransition() ) {
+          $target.removeClass( classes.show );
+        } else {
+          $target.removeClass( classes.oldieS );
+        }
+
+        enableScroll();
+
+        if ( cbClose && typeof cbClose === 'function' ) {
+          timeout( cbClose, CBDURATION );
+        }
+      };
+
+      openModal();
 
       $closeBtn
         .unbind('click')
-        .bind('click', callCloseModal );
+        .bind('click', closeModal );
     };
 
     this.element
@@ -158,29 +194,6 @@ window.requestAnimFrame = (function() {
     $doc
       .unbind('keyup', isEscapeKey)
       .bind('keyup', isEscapeKey );
-  };
-
-
-  Plugin.prototype.openModal = function ( target, cb ) {
-    if ( !target.length ) return;
-
-    target.addClass( classes.show );
-    disableScroll();
-
-    if ( cb ) {
-      timeout( cb, 600 );
-    }
-  };
-
-  Plugin.prototype.closeModal = function ( target, cb ) {
-    if ( !target.length ) return;
-
-    target.removeClass( classes.show );
-    enableScroll();
-
-    if ( cb ) {
-      timeout( cb, 600 );
-    }
   };
 
   Plugin.prototype.destroy = function () {
@@ -224,6 +237,27 @@ window.requestAnimFrame = (function() {
 
     handle.value = requestAnimFrame(loop);
     return handle;
+  }
+
+  /**
+   * http://stackoverflow.com/a/7265037/1762903
+   **/
+  function supportTransition() {
+    var b = document.body || document.documentElement,
+        s = b.style,
+        p = 'transition';
+
+    if ( p in s ) return true;
+
+    var v = ['Moz', 'webkit', 'Webkit', 'Khtml', 'O', 'ms'];
+
+    p = p.charAt(0).toUpperCase() + p.substr(1);
+
+    for (var i = 0; i < v.length; i++) {
+      if ( [v[i] + p] in s ) return true;
+    }
+
+    return false;
   }
 
 
