@@ -53,7 +53,7 @@
     right: 0;
     bottom: 100%;
     left: 0;
-    width: 700px;
+    max-width: 700px;
     margin: 0 auto;
     background: #fff;
     -webkit-transform: translateY(0);
