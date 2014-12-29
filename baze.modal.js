@@ -61,6 +61,7 @@ window.requestAnimFrame = (function() {
     var target  = this.element.attr('data-target'),
         $target = $(target),
         $body   = $(document.body),
+        UID     = getID(),
 
         dID       = $target.attr('id'),
         title     = $target.attr('data-title'),
@@ -83,6 +84,7 @@ window.requestAnimFrame = (function() {
 
     dTitle
       .addClass( classes.title )
+      .attr('id', UID)
       .text( title );
 
     dHeader
@@ -105,12 +107,20 @@ window.requestAnimFrame = (function() {
 
     dDialog
       .addClass( classes.dialog )
+      .attr({
+        'role': 'dialog',
+        'aria-labelledby': UID,
+        'tabindex': '0'
+      })
       .append( dHeader )
       .append( dBody )
       .append( dFooter );
 
     dOverlay
-      .attr('id', dID)
+      .attr({
+        'id': dID,
+        'aria-hidden': 'true'
+      })
       .addClass( classes.overlay )
       .append( dDialog );
 
@@ -122,7 +132,8 @@ window.requestAnimFrame = (function() {
   };
 
   Plugin.prototype.addClickHandler = function () {
-    var cbOpen  = this.settings.onOpen,
+    var trigger = this.element,
+        cbOpen  = this.settings.onOpen,
         cbClose = this.settings.onClose;
 
     console.log( CBDURATION );
@@ -143,7 +154,10 @@ window.requestAnimFrame = (function() {
           $target.addClass( classes.oldieS );
         }
 
+        $target.attr('aria-hidden', 'false');
+
         disableScroll();
+        $closeBtn.eq(0).focus();
 
         if ( cbOpen && typeof cbOpen === 'function' ) {
           timeout( cbOpen, CBDURATION );
@@ -157,7 +171,10 @@ window.requestAnimFrame = (function() {
           $target.removeClass( classes.oldieS );
         }
 
+        $target.attr('aria-hidden', 'true');
+
         enableScroll();
+        trigger.focus();
 
         if ( cbClose && typeof cbClose === 'function' ) {
           timeout( cbClose, CBDURATION );
@@ -210,6 +227,12 @@ window.requestAnimFrame = (function() {
 
   function enableScroll() {
     $page.removeClass( classes.scroll );
+  }
+
+  function getID() {
+    var id = 'bzm' + (new Date()).getTime();
+
+    return id;
   }
 
 
