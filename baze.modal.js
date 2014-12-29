@@ -109,8 +109,7 @@ window.requestAnimFrame = (function() {
       .addClass( classes.dialog )
       .attr({
         'role': 'dialog',
-        'aria-labelledby': UID,
-        'tabindex': '0'
+        'aria-labelledby': UID
       })
       .append( dHeader )
       .append( dBody )
@@ -119,7 +118,8 @@ window.requestAnimFrame = (function() {
     dOverlay
       .attr({
         'id': dID,
-        'aria-hidden': 'true'
+        'aria-hidden': 'true',
+        'tabindex': '-1'
       })
       .addClass( classes.overlay )
       .append( dDialog );
@@ -154,7 +154,10 @@ window.requestAnimFrame = (function() {
           $target.addClass( classes.oldieS );
         }
 
-        $target.attr('aria-hidden', 'false');
+        $target.attr({
+          'aria-hidden': 'false',
+          'tabindex': '0'
+        });
 
         disableScroll();
         $closeBtn.eq(0).focus();
@@ -171,7 +174,10 @@ window.requestAnimFrame = (function() {
           $target.removeClass( classes.oldieS );
         }
 
-        $target.attr('aria-hidden', 'true');
+        $target.attr({
+          'aria-hidden': 'true',
+          'tabindex': '-1'
+        });
 
         enableScroll();
         trigger.focus();
