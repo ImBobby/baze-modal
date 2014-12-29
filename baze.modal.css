@@ -126,10 +126,26 @@
 
 .bzm-btn {
     padding: 8px 16px;
-    border: 0;
+    border: solid 1px #fff;
     line-height: 1.4;
     color: #fff;
     background: #4c7eb0;
+}
+
+.bzm-btn:hover,
+.bzm-btn:focus {
+    background: #5b98d5;
+}
+
+.bzm-btn:focus {
+    outline: #5b98d5 solid 1px;
+}
+
+.bzm-btn:active {
+    background: #4878a8;
+    -webkit-transform: scale(.98);
+        -ms-transform: scale(.98);
+            transform: scale(.98);
 }
 
 .bzm-disable-scroll {
