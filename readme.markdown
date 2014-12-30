@@ -59,6 +59,15 @@ $('#modalTrigger').bazeModal();
 | onClose  | function  | null  | callback after dialog is closed  |
 
 
+## Destroy Baze Modal
+
+Trigger the `bazemodal.destroy` event to destroy Baze Modal
+
+```Javascript
+$('#modalTrigger').trigger('bazemodal.destroy');
+```
+
+
 ## Browser support
 
 Minimum browser support is IE9+ along with other evergreen browsers.
