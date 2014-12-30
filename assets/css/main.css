@@ -1156,7 +1156,7 @@ html {
 }
 
 body {
-  color: #eee;
+  color: #222;
 }
 
 a {
@@ -1195,6 +1195,7 @@ textarea {
   height: 100vh;
   overflow: hidden;
   font-size: 22px;
+  color: #eee;
   background: #4e8dff;
 }
 
@@ -1223,6 +1224,7 @@ textarea {
 
 .doc {
   padding: 1.6em;
+  margin-bottom: -8em;
   color: #333;
   background: #fff;
   -webkit-transform: translateY(-8em);
@@ -1250,4 +1252,8 @@ textarea {
 
 pre {
   font-size: 16px;
+}
+
+.main-footer {
+  text-align: center;
 }
