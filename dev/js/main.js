@@ -11,7 +11,9 @@
         _jquery_cdn     : '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js',
         _jquery_local   : myPrefix + path.js + 'jquery.min.js',
         _fastclick      : myPrefix + path.js + 'fastclick.min.js',
-        _bazeModalJS    : myPrefix + path.js + 'baze.modal.min.js'
+        _bazeModalJS    : myPrefix + path.js + 'baze.modal.min.js',
+        _highlightCSS   : '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/atelier-dune.light.min.css',
+        _highlightJS    : '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js'
     };
 
     var Site = {
@@ -21,6 +23,7 @@
             Site.enableActiveStateMobile();
             Site.WPViewportFix();
             Site.initModal();
+            Site.codeHighlighter();
         },
 
         fastClick: function () {
@@ -57,6 +60,15 @@
                 ],
                 complete: function () {
                     $triggers.bazeModal();
+                }
+            });
+        },
+
+        codeHighlighter: function () {
+            Modernizr.load({
+                load    : [ assets._highlightJS, assets._highlightCSS ],
+                complete: function () {
+                    hljs.initHighlighting();
                 }
             });
         }

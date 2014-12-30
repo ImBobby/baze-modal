@@ -5,27 +5,29 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <meta name="description" content="Baze is a front-end starter template">
+    <meta name="description" content="Baze Modal is a jQuery plugin to create simple, accessible and mobile friendly modal dialog.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     
     <link rel="apple-touch-icon-precomposed" href="assets/img/apple-icon.png" sizes="152x152">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
 
-    <title>front-end starter kit</title>
+    <title>Baze Modal</title>
     
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/baze.modal.css">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
     <script src="assets/js/vendor/modernizr.min.js"></script>
 </head>
 <body>
     <section class="main-section">
         <div class="main-section-content">
-            <h1 class="main-section-title heading hero">
+            <h1 class="main-section-title hero heading">
                 Baze Modal
-                <small>v1.0.0</small>
+                <small>v1.0.1</small>
             </h1>
+            <p>a jQuery plugin to create simple, accessible and mobile friendly modal dialog.</p>
             <button class="btn btn--primary" data-modal-trigger data-target="#myModal">Launch Modal</button>
 
             <div class="bzm-content" id="myModal" data-title="Hello There">
@@ -33,6 +35,80 @@
             </div>
         </div>
     </section>
+
+    <div class="doc">
+        <div class="container">
+            <section>
+                <h2 class="heading h1">Getting Started</h2>
+
+                <p>You can get Baze Modal via <a href="http://bower.io/">Bower</a></p>
+
+<pre><code class="bash">bower install baze-modal --save</code></pre>
+                
+                <p>or you can download from <a href="https://github.com/ImBobby/baze-modal/releases">project respository</a>.</p>
+            </section>
+
+            <section>
+                <h2 class="heading h1">Usage</h2>
+
+                <p>Include Baze-Modal's CSS and Javascript files along with jQuery.</p>
+
+<pre><code class="html">&lt;head>
+    &lt;link rel="stylesheet" href="path/to/baze.modal.css">
+&lt;/head>
+&lt;body>
+    &lt;!-- Page content -->
+
+    &lt;script src="path/to/jquery.js">&lt;/script>
+    &lt;script src="path/to/baze.modal.js">&lt;/script>
+&lt;/body>
+</code></pre>
+
+                <p>then set up the markup like this</p>
+
+<pre><code class="html">&lt;button id="modalTrigger" data-target="#myModal">Open Modal&lt;/button>
+
+&lt;div class="bzm-content" id="myModal" data-title="Hello Modal">
+    &lt;p>You look awesome today!&lt;/p>
+&lt;/div>
+</code></pre>
+
+                <p>init baze-modal</p>
+
+<pre><code class="js">$('#modalTrigger').bazeModal();</code></pre>
+            </section>
+
+            <section>
+                <h2 class="heading h1">Options</h2>
+
+                <dl>
+                    <dt><strong>onOpen</strong></dt>
+                    <dd>Type: <strong>Function</strong></dd>
+                    <dd>Default: <strong>null</strong></dd>
+                    <dd>Desc: <strong>callback after dialog is opened</strong></dd>
+
+                    <dt><strong>onClose</strong></dt>
+                    <dd>Type: <strong>Function</strong></dd>
+                    <dd>Default: <strong>null</strong></dd>
+                    <dd>Desc: <strong>callback after dialog is closed</strong></dd>
+                </dl>
+            </section>
+
+            <section>
+                <h2 class="heading h1">API</h2>
+
+                <strong>Destroy</strong>
+
+<pre><code class="js">$('#modalTrigger').trigger('bazemodal.destroy');</code></pre>
+            </section>
+
+            <section>
+                <h2 class="heading h1">Browsers Support</h2>
+
+                <p>Minimum browser support is IE9+ along with other evergreen browsers.</p>
+            </section>
+        </div>
+    </div>
     
     <script>window.myPrefix = '';</script>
     <script src="assets/js/main.min.js"></script>

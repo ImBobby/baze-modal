@@ -483,7 +483,8 @@ p,
 ul,
 ol,
 hr,
-table {
+table,
+pre {
   font-size: 1em;
   line-height: 1.6em;
   margin: 0 0 1.6em 0;
@@ -631,7 +632,7 @@ table {
   border: solid 2px #eee;
   -webkit-border-radius: 3px;
           border-radius: 3px;
-  font-family: inherit;
+  font-family: 'Lobster', cursive;
   line-height: 1.6em;
   text-align: center;
   white-space: nowrap;
@@ -1138,7 +1139,7 @@ input[type="number"] {
 }
 
 html {
-  font: 400 16px sans-serif;
+  font: 400 18px "Source Sans Pro", sans-serif;
   line-height: 1.6em;
 }
 
@@ -1167,8 +1168,15 @@ textarea {
   margin-bottom: 1.6em;
 }
 
+.container {
+  width: 95%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .heading {
   font-family: 'Lobster', cursive;
+  color: #4e8dff;
 }
 
 .main-section {
@@ -1187,6 +1195,9 @@ textarea {
           transform: translate(-50%, -50%);
 }
 
+.main-section-title {
+  color: #eee;
+}
 .main-section-title small {
   padding: 5px;
   -webkit-border-radius: 3px;
@@ -1195,4 +1206,17 @@ textarea {
   font-weight: 400;
   color: #fff;
   background: #444;
+}
+
+.doc {
+  padding: 1.6em 0;
+  color: #333;
+  background: #fff;
+}
+.doc section {
+  margin-bottom: 3.2em;
+}
+
+pre {
+  font-size: 16px;
 }

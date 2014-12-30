@@ -76,7 +76,7 @@ $multiplier: 3 * 1;
 
     #{ $heading },
     .#{ $heading } {
-
+        
         @if $multiplier < 0 {
             $temp: $multiplier * -1;
 
@@ -95,7 +95,8 @@ p,
 ul,
 ol,
 hr,
-table {
+table,
+pre {
     @include typography_getStyle(0);
 }
 

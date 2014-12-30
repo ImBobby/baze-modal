@@ -29,7 +29,7 @@
 }
 
 html {
-    font: 400 $base_font_size $base_font_family;
+    font: 400 $base_font_size 'Source Sans Pro', sans-serif;
     line-height: $base_line_height;
 }
 
@@ -67,15 +67,21 @@ textarea {
 // 4 Page styles
 // ------------------------------------------------------------------------ //
 
+.container {
+    width: 95%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .heading {
     font-family: 'Lobster', cursive;
+    color: #4e8dff;
 }
 
 .main-section {
     position: relative;
     height: 100vh;
     font-size: 22px;
-    // background: radial-gradient(#fff, mintcream);
 }
 
 .main-section-content {
@@ -87,7 +93,7 @@ textarea {
 }
 
 .main-section-title {
-    // color: #4e8dff;
+    color: #eee;
 
     small {
         padding: 5px;
@@ -97,7 +103,20 @@ textarea {
         color: #fff;
         background: #444;
     }
+}
 
+.doc {
+    padding: $space 0;
+    color: #333;
+    background: #fff;
+
+    section {
+        margin-bottom: $space*2;
+    }
+}
+
+pre {
+    font-size: 16px;
 }
 
 
