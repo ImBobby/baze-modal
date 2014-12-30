@@ -1,3 +1,5 @@
+/*! Baze-Modal v1.0.0 | (c) 2014 @_bobbylie | github.com/ImBobby/baze-modal */
+
 /**
  * requestAnimationFrame polyfill
  * http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
