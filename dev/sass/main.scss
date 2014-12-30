@@ -1,0 +1,85 @@
+/*! [PROJECT_NAME] | December 2014 | Suitmedia */
+
+//  1. Font-face
+//  2. Basic styles
+//  3. Header
+//  4. Page styles
+//  5. Footer
+
+@import "partial/normalize";
+@import "partial/variables";
+@import "partial/resets";
+@import "partial/helpers";
+@import "partial/print";
+
+@import "mixin/mixin";
+@import "modules/modules";
+@import "plugin/plugin";
+
+// 1 Font-face
+// ------------------------------------------------------------------------ //
+
+
+
+// 2 Basic styles
+// ------------------------------------------------------------------------ //
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font: 400 $base_font_size $base_font_family;
+    line-height: $base_line_height;
+}
+
+body {
+    color: $black90;
+}
+
+a {
+    color: $link;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: $link_hover;
+    }
+}
+
+label, 
+input, 
+button, 
+select, 
+textarea {
+    font-family: $base_font_family;
+}
+
+.block {
+    margin-bottom: $space;
+}
+
+// 3 Header
+// ------------------------------------------------------------------------ //
+
+
+// 4 Page styles
+// ------------------------------------------------------------------------ //
+
+.main-section {
+    position: relative;
+    height: 100vh;
+    background: radial-gradient(#fff, mintcream);
+}
+
+.main-section-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+
+// 5 Footer
+// ------------------------------------------------------------------------ //
