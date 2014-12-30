@@ -663,6 +663,18 @@ pre {
   background: rgba(230, 230, 230, 0.3);
 }
 
+.btn--secondary {
+  border-color: #555;
+  color: #555;
+}
+.btn--secondary:hover, .btn--secondary:focus {
+  color: #eee;
+  background: #444;
+}
+.btn--secondary:active {
+  background: #555;
+}
+
 .btn--block {
   width: 100%;
 }

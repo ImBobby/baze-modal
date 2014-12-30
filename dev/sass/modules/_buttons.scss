@@ -55,6 +55,21 @@ $BTN_PADDING: $space/3 $space;
     @include btnStyle(rgba(255,255,255,.3));
 }
 
+.btn--secondary {
+    border-color: #555;
+    color: #555;
+
+    &:hover,
+    &:focus {
+        color: #eee;
+        background: #444;
+    }
+
+    &:active {
+        background: #555;
+    }
+}
+
 .btn--block {
     width: 100%;
 }

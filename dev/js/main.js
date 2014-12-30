@@ -13,7 +13,8 @@
         _fastclick      : myPrefix + path.js + 'fastclick.min.js',
         _bazeModalJS    : myPrefix + path.js + 'baze.modal.min.js',
         _highlightCSS   : '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/atelier-dune.light.min.css',
-        _highlightJS    : '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js'
+        _highlightJS    : '//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js',
+        _disqus         : myPrefix + path.js + 'disqus.min.js'
     };
 
     var Site = {
@@ -24,6 +25,7 @@
             Site.WPViewportFix();
             Site.initModal();
             Site.codeHighlighter();
+            Site.loadComment();
         },
 
         fastClick: function () {
@@ -70,6 +72,15 @@
                 complete: function () {
                     hljs.initHighlighting();
                 }
+            });
+        },
+
+        loadComment: function () {
+            var $trigger = $('#loadComment');
+
+            $trigger.click( function () {
+                Modernizr.load(assets._disqus);
+                $(this).fadeOut();
             });
         }
 
