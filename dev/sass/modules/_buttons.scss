@@ -6,11 +6,14 @@ $BTN_PADDING: $space/3 $space;
 
 @mixin btnStyle( $bg, $color: #fff ) {
     color: $color;
-    background: $bg;
 
     &:hover,
     &:focus {
+        background: $bg;
+    }
 
+    &:active {
+        background: darken($bg, 10%);
     }
 }
 
@@ -21,14 +24,15 @@ $BTN_PADDING: $space/3 $space;
 .btn {
     display: inline-block;
     padding: $BTN_PADDING;
-    border: 0;
+    border: solid 2px #eee;
+    border-radius: 3px;
     font-family: inherit;
     line-height: $base_line_height;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
     color: $black80;
-    background: #ddd;
+    background: transparent;
     cursor: pointer;
     user-select: none;
     
@@ -46,6 +50,10 @@ $BTN_PADDING: $space/3 $space;
 
 // Modifier
 // ------------------------------------------------------------------------ //
+
+.btn--primary {
+    @include btnStyle(rgba(255,255,255,.3));
+}
 
 .btn--block {
     width: 100%;

@@ -15,13 +15,22 @@
     <title>front-end starter kit</title>
     
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/baze.modal.css">
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <script src="assets/js/vendor/modernizr.min.js"></script>
 </head>
 <body>
     <section class="main-section">
         <div class="main-section-content">
-            <h1 class="heading">Baze Modal</h1>
-            <button class="btn btn--primary">Launch Modal</button>
+            <h1 class="main-section-title heading hero">
+                Baze Modal
+                <small>v1.0.0</small>
+            </h1>
+            <button class="btn btn--primary" data-modal-trigger data-target="#myModal">Launch Modal</button>
+
+            <div class="bzm-content" id="myModal" data-title="Hello There">
+                <p>You look awesome today by the way. (If you're a dude, #nohomo)</p>
+            </div>
         </div>
     </section>
     

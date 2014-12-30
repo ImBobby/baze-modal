@@ -68,6 +68,10 @@ $RATIO          : $PERFECT_FOURTH;
 
 $multiplier: 3 * 1;
 
+.hero {
+    @include typography_getStyle(4);
+}
+
 @each $heading in $headings {
 
     #{ $heading },
@@ -78,7 +82,7 @@ $multiplier: 3 * 1;
 
             @include typography_getStyle($temp, 'down');
         } @else {
-            @include typography_getStyle($multiplier);    
+            @include typography_getStyle($multiplier);
         }
 
     }

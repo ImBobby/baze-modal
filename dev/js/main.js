@@ -10,7 +10,8 @@
     var assets = {
         _jquery_cdn     : '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js',
         _jquery_local   : myPrefix + path.js + 'jquery.min.js',
-        _fastclick      : myPrefix + path.js + 'fastclick.min.js'
+        _fastclick      : myPrefix + path.js + 'fastclick.min.js',
+        _bazeModalJS    : myPrefix + path.js + 'baze.modal.min.js'
     };
 
     var Site = {
@@ -19,6 +20,7 @@
             Site.fastClick();
             Site.enableActiveStateMobile();
             Site.WPViewportFix();
+            Site.initModal();
         },
 
         fastClick: function () {
@@ -44,6 +46,19 @@
                 style.appendChild(fix);
                 document.getElementsByTagName('head')[0].appendChild(style);
             }
+        },
+
+        initModal: function () {
+            var $triggers = $('[data-modal-trigger]');
+
+            Modernizr.load({
+                load    : [
+                    assets._bazeModalJS
+                ],
+                complete: function () {
+                    $triggers.bazeModal();
+                }
+            });
         }
 
     };

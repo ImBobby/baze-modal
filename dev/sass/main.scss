@@ -34,7 +34,8 @@ html {
 }
 
 body {
-    color: $black90;
+    color: #eee;
+    background: #4e8dff;
 }
 
 a {
@@ -66,10 +67,15 @@ textarea {
 // 4 Page styles
 // ------------------------------------------------------------------------ //
 
+.heading {
+    font-family: 'Lobster', cursive;
+}
+
 .main-section {
     position: relative;
     height: 100vh;
-    background: radial-gradient(#fff, mintcream);
+    font-size: 22px;
+    // background: radial-gradient(#fff, mintcream);
 }
 
 .main-section-content {
@@ -78,6 +84,20 @@ textarea {
     left: 50%;
     text-align: center;
     transform: translate(-50%, -50%);
+}
+
+.main-section-title {
+    // color: #4e8dff;
+
+    small {
+        padding: 5px;
+        border-radius: 3px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #fff;
+        background: #444;
+    }
+
 }
 
 
