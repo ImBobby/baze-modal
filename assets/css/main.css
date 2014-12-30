@@ -1157,7 +1157,6 @@ html {
 
 body {
   color: #eee;
-  background: #4e8dff;
 }
 
 a {
@@ -1182,7 +1181,7 @@ textarea {
 
 .container {
   width: 95%;
-  max-width: 800px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -1194,7 +1193,9 @@ textarea {
 .main-section {
   position: relative;
   height: 100vh;
+  overflow: hidden;
   font-size: 22px;
+  background: #4e8dff;
 }
 
 .main-section-content {
@@ -1221,12 +1222,30 @@ textarea {
 }
 
 .doc {
-  padding: 1.6em 0;
+  padding: 1.6em;
   color: #333;
   background: #fff;
+  -webkit-transform: translateY(-8em);
+      -ms-transform: translateY(-8em);
+          transform: translateY(-8em);
 }
 .doc section {
   margin-bottom: 3.2em;
+}
+
+.fork {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.4em 3.2em;
+  color: #4e8dff;
+  background: #fff;
+  -webkit-transform: rotate(45deg) translate(35px, -120px);
+      -ms-transform: rotate(45deg) translate(35px, -120px);
+          transform: rotate(45deg) translate(35px, -120px);
+  -webkit-transform-origin: bottom left;
+      -ms-transform-origin: bottom left;
+          transform-origin: bottom left;
 }
 
 pre {

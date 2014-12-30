@@ -35,7 +35,6 @@ html {
 
 body {
     color: #eee;
-    background: #4e8dff;
 }
 
 a {
@@ -69,7 +68,7 @@ textarea {
 
 .container {
     width: 95%;
-    max-width: 800px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -81,7 +80,9 @@ textarea {
 .main-section {
     position: relative;
     height: 100vh;
+    overflow: hidden;
     font-size: 22px;
+    background: #4e8dff;
 }
 
 .main-section-content {
@@ -106,13 +107,25 @@ textarea {
 }
 
 .doc {
-    padding: $space 0;
+    padding: $space;
     color: #333;
     background: #fff;
+    transform: translateY( $space*-5 );
 
     section {
         margin-bottom: $space*2;
     }
+}
+
+.fork {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: $space/4 $space*2;
+    color: #4e8dff;
+    background: #fff;
+    transform: rotate(45deg) translate(35px, -120px);
+    transform-origin: bottom left;
 }
 
 pre {
