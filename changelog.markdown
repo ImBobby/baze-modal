@@ -1,5 +1,10 @@
 # Changelog
 
+# 1.0.2
+
+- Set default font value
+- Set `aria-hidden="true"` to original dialog content
+
 # 1.0.1
 
 Improve Baze Modal consistency:
