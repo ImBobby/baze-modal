@@ -77,7 +77,9 @@ window.requestAnimFrame = (function() {
         dDialog   = $( document.createElement('div') ),
         dOverlay  = $( document.createElement('div') );
 
-    $target.removeAttr('id');
+    $target
+      .removeAttr('id')
+      .attr('aria-hidden', 'true');
 
     dBtnX
       .addClass( classes.btnX )
