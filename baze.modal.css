@@ -19,6 +19,7 @@
     width: 100%;
     height: 100%;
     overflow-y: auto;
+    font: 400 16px sans-serif;
     background: rgba(55, 58, 71, 0.9);
     opacity: 0;
     -webkit-transform: scale(0) translateZ(0);
