@@ -1,4 +1,4 @@
-/*! Baze-Modal v1.0.2 | (c) 2014 @_bobbylie | github.com/ImBobby/baze-modal */
+/*! Baze-Modal v1.1.0 | (c) 2014 @_bobbylie | github.com/ImBobby/baze-modal */
 
 /**
  * requestAnimationFrame polyfill

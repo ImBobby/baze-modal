@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.1.0
+
+Fix jumping issue [#1](https://github.com/ImBobby/baze-modal/issues/1)
+
 # 1.0.2
 
 - Set default font value
