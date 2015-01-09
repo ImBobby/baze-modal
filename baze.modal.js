@@ -164,11 +164,14 @@ window.requestAnimFrame = (function() {
         });
 
         disableScroll();
-        $closeBtn.eq(0).focus();
 
         if ( cbOpen && typeof cbOpen === 'function' ) {
           timeout( cbOpen, CBDURATION );
         }
+
+        timeout(function () {
+          $closeBtn.eq(0).focus();
+        }, CBDURATION);
       };
 
       closeModal = function () {
