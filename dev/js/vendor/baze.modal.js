@@ -1,4 +1,4 @@
-/*! Baze-Modal v1.0.2 | (c) 2014 @_bobbylie | github.com/ImBobby/baze-modal */
+/*! Baze-Modal v1.1.0 | (c) 2014 @_bobbylie | github.com/ImBobby/baze-modal */
 
 /**
  * requestAnimationFrame polyfill
@@ -164,11 +164,14 @@ window.requestAnimFrame = (function() {
         });
 
         disableScroll();
-        $closeBtn.eq(0).focus();
 
         if ( cbOpen && typeof cbOpen === 'function' ) {
           timeout( cbOpen, CBDURATION );
         }
+
+        timeout(function () {
+          $closeBtn.eq(0).focus();
+        }, CBDURATION);
       };
 
       closeModal = function () {

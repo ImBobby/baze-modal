@@ -1,4 +1,4 @@
-/*! Baze-Modal v1.0.2 | (c) 2014 @_bobbylie | github.com/ImBobby/baze-modal */
+/*! Baze-Modal v1.1.0 | (c) 2014 @_bobbylie | github.com/ImBobby/baze-modal */
 
 .bzm-content {
     display: none;
@@ -153,6 +153,6 @@
 }
 
 .bzm-disable-scroll {
-    height: 100%;
+    max-height: 100%;
     overflow: hidden;
 }
