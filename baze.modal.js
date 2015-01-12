@@ -55,7 +55,6 @@ window.requestAnimFrame = (function() {
   Plugin.prototype.init = function () {
     this.setupModal();
     this.addClickHandler();
-    this.escapeKeyHandler();
     this.destroy();
   };
 
@@ -204,14 +203,29 @@ window.requestAnimFrame = (function() {
       .bind('click', getTarget );
   };
 
-  Plugin.prototype.escapeKeyHandler = function () {
+  Plugin.prototype.destroy = function () {
+    var elem = this.element;
+
+    elem.on('bazemodal.destroy', function () {
+      elem.unbind('click');
+    });
+  };
+
+  (function escapeKeyHandler() {
     var $doc  = $(document);
     var cb    = this.settings;
 
     var isEscapeKey = function (e) {
-      var elem = $('.' + classes.show);
+      var key   = ( window.event ) ? e.which : e.keyCode,
+          elem;
 
-      if ( e.keyCode === 27 && elem.length ) {
+      if ( supportTransition() ) {
+        elem = $('.' + classes.show);
+      } else {
+        elem = $('.' + classes.oldieS);
+      }
+
+      if ( key === 27 && elem.length ) {
         var $btnClose = elem.find('.' + classes.btnX);
 
         $btnClose.trigger('click');
@@ -222,15 +236,7 @@ window.requestAnimFrame = (function() {
     $doc
       .unbind('keyup', isEscapeKey)
       .bind('keyup', isEscapeKey );
-  };
-
-  Plugin.prototype.destroy = function () {
-    var elem = this.element;
-
-    elem.on('bazemodal.destroy', function () {
-      elem.unbind('click');
-    });
-  };
+  })();
 
   function disableScroll() {
     $page.addClass( classes.scroll );
@@ -266,7 +272,11 @@ window.requestAnimFrame = (function() {
       var current = new Date().getTime(),
           delta   = current - start;
 
-      delta >= delay ? fn.call() : handle.value = requestAnimFrame(loop);
+      if ( delta >= delay ) {
+        fn.call();
+      } else {
+        handle.value = requestAnimFrame(loop);
+      }
     }
 
     handle.value = requestAnimFrame(loop);
