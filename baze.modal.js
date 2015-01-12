@@ -140,8 +140,6 @@ window.requestAnimFrame = (function() {
         cbOpen  = this.settings.onOpen,
         cbClose = this.settings.onClose;
 
-    console.log( CBDURATION );
-
     var getTarget = function (e) {
       var target    = this.getAttribute('data-target'),
           $target   = $(target),
