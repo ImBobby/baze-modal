@@ -1,4 +1,4 @@
-/*! Baze-Modal v1.1.0 | (c) 2014 @_bobbylie | github.com/ImBobby/baze-modal */
+/*! Baze-Modal v1.2.0 | (c) 2014 @_bobbylie | github.com/ImBobby/baze-modal */
 
 .bzm-content {
     display: none;
@@ -20,6 +20,7 @@
     height: 100%;
     overflow-y: auto;
     font: 400 16px sans-serif;
+    background: #222;
     background: rgba(55, 58, 71, 0.9);
     opacity: 0;
     -webkit-transform: scale(0) translateZ(0);

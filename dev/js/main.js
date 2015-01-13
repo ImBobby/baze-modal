@@ -67,6 +67,10 @@
         },
 
         codeHighlighter: function () {
+            var $html = $('html');
+
+            if ( !$html.hasClass('csstransforms') ) return;
+
             Modernizr.load({
                 load    : [ assets._highlightJS, assets._highlightCSS ],
                 complete: function () {
