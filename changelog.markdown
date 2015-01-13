@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+Add new option: `closeOnOverlayClick`
+
 ## 1.2.0
 
 Add IE8 Support
