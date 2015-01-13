@@ -55,6 +55,7 @@ $('#modalTrigger').bazeModal();
 
 | Option  | Type  | Default  | Description  |
 |---|---|---|---|
+| closeOnOverlayClick | boolean | true | close modal by clicking the dialog's overlay |
 | onOpen  | function  | null  | callback after dialog is opened  |
 | onClose  | function  | null  | callback after dialog is closed  |
 

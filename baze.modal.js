@@ -1,26 +1,29 @@
 /*! Baze-Modal v1.2.0 | (c) 2014 @_bobbylie | github.com/ImBobby/baze-modal */
 
-/**
- * requestAnimationFrame polyfill
- * http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
- **/
-window.requestAnimFrame = (function() {
-  return  window.requestAnimationFrame    || 
-      window.webkitRequestAnimationFrame  || 
-      window.mozRequestAnimationFrame     || 
-      window.oRequestAnimationFrame       || 
-      window.msRequestAnimationFrame      || 
-      function(callback, element){
-        window.setTimeout(callback, 1000 / 60);
-      };
-})();
-
 ;(function ( $, window, document, undefined ) {
+
+  /**
+   * requestAnimationFrame polyfill
+   * http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+   */
+  var requestAnimFrame = (function() {
+    return  window.requestAnimationFrame        || 
+            window.webkitRequestAnimationFrame  || 
+            window.mozRequestAnimationFrame     || 
+            window.oRequestAnimationFrame       || 
+            window.msRequestAnimationFrame      || 
+            function(callback, element){
+              window.setTimeout(callback, 1000 / 60);
+            };
+  })();
 
   var pluginName = 'bazeModal';
 
   var $page = $('html, body');
 
+  /**
+   * Duration before running callback
+   */
   var CBDURATION = supportTransition()? 600 : 100;
 
   var classes = {
@@ -40,11 +43,23 @@ window.requestAnimFrame = (function() {
     oldieS  : 'bzm--oldie-show'
   };
 
+  /**
+   * Plugin's default settings
+   * @config {bool} closeOnOverlayClick
+   * @config {fn} onOpen
+   * @config {fn} onClose
+   */
   var defaults = {
-    onOpen: null,
-    onClose: null
+    closeOnOverlayClick : true,
+    onOpen              : null,
+    onClose             : null
   };
 
+  /**
+   * Represents the plugin instance
+   * @param {DOM Object} element - The DOM Object
+   * @param {Object} options - User options
+   */
   function Plugin ( element, options ) {
     this.element  = $(element);
     this.settings = $.extend( {}, defaults, options );
@@ -58,6 +73,10 @@ window.requestAnimFrame = (function() {
     this.destroy();
   };
 
+  /**
+   * Construct the dialog's DOM.
+   * Each dialog has unique ID. 
+   */
   Plugin.prototype.setupModal = function () {
     var target  = this.element.attr('data-target'),
         $target = $(target),
@@ -134,10 +153,16 @@ window.requestAnimFrame = (function() {
     $body.append( dOverlay );
   };
 
+  /**
+   * Bind events to:
+   * - Modal trigger
+   * - Modal overlay
+   */
   Plugin.prototype.addClickHandler = function () {
-    var trigger = this.element,
-        cbOpen  = this.settings.onOpen,
-        cbClose = this.settings.onClose;
+    var trigger       = this.element,
+        cbOpen        = this.settings.onOpen,
+        cbClose       = this.settings.onClose,
+        closeOnClick  = this.settings.closeOnOverlayClick;
 
     var getTarget = function (e) {
       var target    = this.getAttribute('data-target'),
@@ -196,6 +221,18 @@ window.requestAnimFrame = (function() {
       $closeBtn
         .unbind('click')
         .bind('click', closeModal );
+
+      if ( !closeOnClick ) return;
+
+      $target
+        .unbind('click')
+        .bind('click', function (e) {
+          var $eventTarget = $( e.target );
+          
+          if ( !$eventTarget.hasClass( classes.overlay ) ) return;
+
+          closeModal();
+        });
     };
 
     this.element
@@ -203,6 +240,9 @@ window.requestAnimFrame = (function() {
       .bind('click', getTarget );
   };
 
+  /**
+   * Destroy plugin instance
+   */
   Plugin.prototype.destroy = function () {
     var elem = this.element;
 
@@ -211,6 +251,9 @@ window.requestAnimFrame = (function() {
     });
   };
 
+  /**
+   * Bind escape key to close opened modal
+   */
   (function escapeKeyHandler() {
     var $doc  = $(document);
     var cb    = this.settings;
@@ -246,17 +289,19 @@ window.requestAnimFrame = (function() {
     $page.removeClass( classes.scroll );
   }
 
+  /**
+   * return unique ID with prefix "bzm"
+   */
   function getID() {
     var id = 'bzm' + (new Date()).getTime();
 
     return id;
   }
 
-
   /**
    * Better setTimeout using requestAnimationFrame
    * https://gist.github.com/joelambert/1002116#file-requesttimeout-js
-   **/
+   */
   function timeout( fn, delay ) {
     if ( !window.requestAnimationFrame &&
          !window.webkitRequestAnimationFrame &&
@@ -285,7 +330,7 @@ window.requestAnimFrame = (function() {
 
   /**
    * http://stackoverflow.com/a/7265037/1762903
-   **/
+   */
   function supportTransition() {
     var b = document.body || document.documentElement,
         s = b.style,
@@ -303,7 +348,6 @@ window.requestAnimFrame = (function() {
 
     return false;
   }
-
 
   $.fn[ pluginName ] = function ( options ) {
     return this.each(function() {
