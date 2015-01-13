@@ -70,8 +70,9 @@ $('#modalTrigger').trigger('bazemodal.destroy');
 
 ## Browser support
 
-Minimum browser support is IE9+ along with other evergreen browsers.
+Baze Modal support all evergreen browsers and IE8+ with graceful degradation.
 
 ## Todo
 
-- [ ] IE8 Support
+- [X] IE8 Support
+- Image Gallery Support
