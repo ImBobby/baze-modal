@@ -13,7 +13,7 @@
     "fastclick": "~0.6.11",
     "modernizr": "~2.8.3",
     "baze-grid": "~1.2.3",
-    "baze-modal": "~1.2.0",
+    "baze-modal": "~1.3.0",
     "highlight-js": "~7.0.1"
   }
 }
