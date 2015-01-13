@@ -75,4 +75,4 @@ Baze Modal support all evergreen browsers and IE8+ with graceful degradation.
 ## Todo
 
 - [X] IE8 Support
-- Image Gallery Support
+- [ ] Image Gallery Support
